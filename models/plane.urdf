@@ -1,0 +1,263 @@
+<?xml version="1.0"?>
+<robot name="plane_with_obstacles">
+  
+  <!-- Ground Plane -->
+  <link name="ground_plane">
+    <visual>
+      <geometry>
+        <box size="10.0 10.0 0.1"/>
+      </geometry>
+      <material name="ground_color">
+        <color rgba="0.5 0.5 0.5 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="10.0 10.0 0.1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="100.0"/>
+      <inertia ixx="83.33" ixy="0.0" ixz="0.0" 
+               iyy="83.33" iyz="0.0" 
+               izz="166.67"/>
+    </inertial>
+  </link>
+
+  <!-- Box Obstacle 1 -->
+  <link name="box_obstacle1">
+    <visual>
+      <geometry>
+        <box size="0.5 0.5 1.0"/>
+      </geometry>
+      <material name="box_color1">
+        <color rgba="0.8 0.2 0.2 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.5 0.5 1.0"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="5.0"/>
+      <inertia ixx="0.52" ixy="0.0" ixz="0.0" 
+               iyy="0.52" iyz="0.0" 
+               izz="0.21"/>
+    </inertial>
+  </link>
+
+  <!-- Joint for Box Obstacle 1 -->
+  <joint name="ground_to_box1" type="fixed">
+    <parent link="ground_plane"/>
+    <child link="box_obstacle1"/>
+    <origin xyz="2.0 1.5 0.55" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Cylinder Obstacle 1 -->
+  <link name="cylinder_obstacle1">
+    <visual>
+      <geometry>
+        <cylinder radius="0.3" length="0.8"/>
+      </geometry>
+      <material name="cylinder_color1">
+        <color rgba="0.2 0.8 0.2 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.3" length="0.8"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="3.0"/>
+      <inertia ixx="0.205" ixy="0.0" ixz="0.0" 
+               iyy="0.205" iyz="0.0" 
+               izz="0.135"/>
+    </inertial>
+  </link>
+
+  <!-- Joint for Cylinder Obstacle 1 -->
+  <joint name="ground_to_cylinder1" type="fixed">
+    <parent link="ground_plane"/>
+    <child link="cylinder_obstacle1"/>
+    <origin xyz="-1.5 2.0 0.45" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Sphere Obstacle 1 -->
+  <link name="sphere_obstacle1">
+    <visual>
+      <geometry>
+        <sphere radius="0.4"/>
+      </geometry>
+      <material name="sphere_color1">
+        <color rgba="0.2 0.2 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.4"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.0"/>
+      <inertia ixx="0.064" ixy="0.0" ixz="0.0" 
+               iyy="0.064" iyz="0.0" 
+               izz="0.064"/>
+    </inertial>
+  </link>
+
+  <!-- Joint for Sphere Obstacle 1 -->
+  <joint name="ground_to_sphere1" type="fixed">
+    <parent link="ground_plane"/>
+    <child link="sphere_obstacle1"/>
+    <origin xyz="0.5 -2.5 0.45" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Box Obstacle 2 (Wall-like) -->
+  <link name="box_obstacle2">
+    <visual>
+      <geometry>
+        <box size="3.0 0.2 1.5"/>
+      </geometry>
+      <material name="box_color2">
+        <color rgba="0.8 0.8 0.2 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="3.0 0.2 1.5"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="8.0"/>
+      <inertia ixx="1.503" ixy="0.0" ixz="0.0" 
+               iyy="6.003" iyz="0.0" 
+               izz="6.003"/>
+    </inertial>
+  </link>
+
+  <!-- Joint for Box Obstacle 2 -->
+  <joint name="ground_to_box2" type="fixed">
+    <parent link="ground_plane"/>
+    <child link="box_obstacle2"/>
+    <origin xyz="-3.0 0.0 0.8" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Cylinder Obstacle 2 (Shorter) -->
+  <link name="cylinder_obstacle2">
+    <visual>
+      <geometry>
+        <cylinder radius="0.25" length="0.5"/>
+      </geometry>
+      <material name="cylinder_color2">
+        <color rgba="0.8 0.2 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.25" length="0.5"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.5"/>
+      <inertia ixx="0.063" ixy="0.0" ixz="0.0" 
+               iyy="0.063" iyz="0.0" 
+               izz="0.047"/>
+    </inertial>
+  </link>
+
+  <!-- Joint for Cylinder Obstacle 2 -->
+  <joint name="ground_to_cylinder2" type="fixed">
+    <parent link="ground_plane"/>
+    <child link="cylinder_obstacle2"/>
+    <origin xyz="3.5 -1.0 0.3" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Small Box Obstacles (Group) -->
+  <link name="small_box1">
+    <visual>
+      <geometry>
+        <box size="0.3 0.3 0.3"/>
+      </geometry>
+      <material name="small_box_color">
+        <color rgba="0.2 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.3 0.3 0.3"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.015" ixy="0.0" ixz="0.0" 
+               iyy="0.015" iyz="0.0" 
+               izz="0.015"/>
+    </inertial>
+  </link>
+
+  <joint name="ground_to_small_box1" type="fixed">
+    <parent link="ground_plane"/>
+    <child link="small_box1"/>
+    <origin xyz="1.0 3.0 0.2" rpy="0 0 0.785"/>
+  </joint>
+
+  <link name="small_box2">
+    <visual>
+      <geometry>
+        <box size="0.3 0.3 0.3"/>
+      </geometry>
+      <material name="small_box_color2">
+        <color rgba="0.8 0.4 0.2 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.3 0.3 0.3"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.015" ixy="0.0" ixz="0.0" 
+               iyy="0.015" iyz="0.0" 
+               izz="0.015"/>
+    </inertial>
+  </link>
+
+  <joint name="ground_to_small_box2" type="fixed">
+    <parent link="ground_plane"/>
+    <child link="small_box2"/>
+    <origin xyz="1.4 3.2 0.2" rpy="0 0 0.4"/>
+  </joint>
+
+  <!-- Ramp Obstacle -->
+  <link name="ramp_obstacle">
+    <visual>
+      <geometry>
+        <box size="1.5 1.0 0.1"/>
+      </geometry>
+      <material name="ramp_color">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="1.5 1.0 0.1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="3.0"/>
+      <inertia ixx="0.275" ixy="0.0" ixz="0.0" 
+               iyy="0.565" iyz="0.0" 
+               izz="0.815"/>
+    </inertial>
+  </link>
+
+  <joint name="ground_to_ramp" type="fixed">
+    <parent link="ground_plane"/>
+    <child link="ramp_obstacle"/>
+    <origin xyz="-2.0 -3.0 0.35" rpy="0 0.3 0"/>
+  </joint>
+
+</robot>
