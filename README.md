@@ -2,7 +2,7 @@
 
 Overview
 - RoboWorm is a small PyBullet-based simulation of a worm-like robot (head, body segments, tail) driven by revolute joints and simulated muscle forces.
-- The repository includes a runnable Python simulator, a slider demo, URDF robot and plane models, and a notebook for quick experiments.
+- The repository includes a runnable Python simulator, URDF robot and plane models, and a notebook for quick experiments.
 
 Files
 - [robo_worm.py](robo_worm.py) — main simulation script. Uses a camera, user sliders for joint control and POSITION_CONTROL to command joints. See symbols: [`robo_worm.get_link_index_by_name`](robo_worm.py), [`robo_worm.slider_to_joint`](robo_worm.py) and [`robo_worm.robot_id`](robo_worm.py).
