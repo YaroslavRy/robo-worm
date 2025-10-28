@@ -13,10 +13,10 @@ Files
 
 Quick start (virtualenv recommended)
 1. Create and activate a venv (example):
-   - python -m venv venv
-   - source venv/bin/activate
+   - `python -m venv venv`
+   - `source venv/bin/activate`
 2. Install dependencies:
-   - pip install -r requirements.txt
+   - `pip install -r requirements.txt`
 3. Run the main simulator:
    - `python robo_worm.py`
    - The script creates debug sliders for non-fixed joints and opens a PyBullet GUI camera view.
